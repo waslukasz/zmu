@@ -546,10 +546,10 @@ p {
     transform: translateX(-150%) skewX(-25deg);
   }
   50% {
-    transform: translateX(150%) skewX(-25deg);
+    transform: translateX(250%) skewX(-25deg);
   }
   100% {
-    transform: translateX(150%) skewX(-25deg);
+    transform: translateX(250%) skewX(-25deg);
   }
 }
 
@@ -611,4 +611,5 @@ p {
     overflow: hidden;
   }
 }
+
 
