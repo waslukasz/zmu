@@ -1,0 +1,595 @@
+/* ========================================================================
+         1. ZMIENNE I STYLE GLOBALNE
+         ======================================================================== */
+:root {
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lato", sans-serif;
+  --color-beige: #f5f0e8;
+  --color-text: #4e423d;
+  --color-accent: #d8afa0;
+  --color-white: #ffffff;
+  --color-dark: #4e423d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-white);
+  margin: 0;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 80px 0;
+  overflow-x: hidden;
+}
+
+section:nth-of-type(odd) {
+  background-color: var(--color-beige);
+}
+
+/* ========================================================================
+         2. TYPOGRAFIA I PODSTAWOWE ELEMENTY
+         ======================================================================== */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: var(--color-white);
+  margin: 10px 0 20px;
+}
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+p {
+  max-width: 700px;
+  margin: 0 auto 1.2rem;
+  text-align: center;
+}
+
+/* ========================================================================
+         3. KOMPONENTY (Przyciski, Listy, Karty)
+         ======================================================================== */
+.btn {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  padding: 15px 35px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #c99f90;
+  transform: translateY(-3px);
+}
+
+.btn--large {
+  padding: 18px 40px;
+  font-size: 1.1rem;
+}
+
+.includes-list {
+  list-style-type: "✓  ";
+  text-align: left;
+  max-width: 500px;
+  margin: 40px auto 0;
+  padding-left: 20px;
+}
+.includes-list li {
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+/* ========================================================================
+         4. SEKCJE I SPECYFICZNE ELEMENTY
+         ======================================================================== */
+
+/* --- NAWIGACJA --- */
+.sticky-nav {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 10px 0;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+  backdrop-filter: blur(5px);
+}
+.sticky-nav.visible {
+  transform: translateY(0);
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.nav-link-cta {
+  font-weight: bold;
+  color: var(--color-accent);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 5px;
+}
+.nav-link-cta::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.nav-link-cta:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* --- SEKCJA HERO --- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--color-white);
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../images/wellness-retreat-pieniny-aerial-1.jpg") no-repeat center
+      center / cover;
+  padding: 20px;
+}
+.hero .subtitle {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+.hero p {
+  font-size: 1.25rem;
+  font-weight: 300;
+  max-width: 650px;
+  margin-bottom: 30px;
+}
+
+.btn-hero {
+  background-color: rgba(78, 66, 61, 0.65);
+  backdrop-filter: blur(8px);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  text-decoration: none;
+  padding: 16px 40px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.btn-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: hero-shine 7s infinite ease-in-out;
+}
+.btn-hero:hover {
+  background-color: rgba(78, 66, 61, 0.8);
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* --- POZOSTAŁE SEKCJE --- */
+.early-proof .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: center;
+}
+.embedded-image {
+  display: block;
+  margin: 50px auto;
+  max-width: 100%;
+  width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 50px;
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+.solution-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+.solution-item span {
+  font-size: 2rem;
+}
+.solution-item p {
+  text-align: left;
+  margin: 0;
+}
+.experts-grid-vertical {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+.expert-item {
+  text-align: center;
+}
+.expert-item img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: center;
+}
+.process-grid .day {
+  background: var(--color-white);
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 800px;
+  margin: 40px auto;
+}
+.price-card {
+  border: 1px solid var(--color-accent);
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.price-card.featured {
+  background-color: var(--color-beige);
+}
+.price-card .price {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-dark);
+  margin: 10px 0;
+}
+.price-card .btn {
+  background-color: var(--color-dark);
+  margin-top: 20px;
+}
+.price-card.featured .btn {
+  background-color: var(--color-accent);
+}
+.includes-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 50px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 80px auto 0;
+}
+.includes-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+.includes-text h3 {
+  text-align: left;
+  margin-top: 0;
+}
+.includes-text .includes-list {
+  margin: 20px 0 0 0;
+}
+.final-cta .cta-button-wrapper {
+  text-align: center;
+  margin-top: 30px;
+}
+.faq-item {
+  max-width: 700px;
+  margin: 0 auto 25px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+}
+.faq-item p {
+  text-align: left;
+  margin: 0;
+}
+
+/* ========================================================================
+         5. KARUZELA I LIGHTBOX
+         ======================================================================== */
+
+/* --- KARUZELA --- */
+.carousel {
+  max-width: 800px;
+  margin: 40px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.carousel-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.carousel-slide {
+  min-width: 100%;
+  cursor: pointer;
+}
+.carousel-slide img {
+  width: 100%;
+  display: block;
+}
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+.carousel-button {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  color: var(--color-dark);
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
+  line-height: 1;
+  pointer-events: auto;
+}
+.carousel-button:hover {
+  background-color: var(--color-white);
+}
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.carousel-dot.active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: scale(1.1);
+}
+
+/* --- LIGHTBOX --- */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.lightbox-overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+.lightbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  max-width: 80vw;
+  max-height: 80vh;
+}
+.lightbox-container img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lightbox-container img.lightbox-image--out {
+  opacity: 0;
+  transform: scale(0.95);
+  filter: blur(5px);
+}
+.lightbox-controls {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.lightbox-close-btn {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: 1px solid var(--color-accent);
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.lightbox-close-btn:hover {
+  background-color: #c99f90;
+  border-color: #c99f90;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+.lightbox-nav-btn {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lightbox-nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--color-white);
+}
+
+/* ========================================================================
+         6. ANIMACJE
+         ======================================================================== */
+@keyframes hero-shine {
+  0%,
+  30% {
+    transform: translateX(-150%) skewX(-25deg);
+  }
+  50% {
+    transform: translateX(150%) skewX(-25deg);
+  }
+  100% {
+    transform: translateX(150%) skewX(-25deg);
+  }
+}
+
+/* ========================================================================
+         7. MEDIA QUERIES (RESPONSYWNOŚĆ)
+         ======================================================================== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  section {
+    padding: 60px 0;
+  }
+
+  .early-proof .grid,
+  .process-grid,
+  .pricing-grid,
+  .experts-grid-vertical,
+  .includes-wrapper,
+  .solution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solution-grid,
+  .includes-wrapper {
+    gap: 30px;
+  }
+  .includes-text h3 {
+    text-align: center;
+  }
+
+  .lightbox-close-btn,
+  .lightbox-nav-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+  .lightbox-controls {
+    gap: 10px;
+  }
+}
