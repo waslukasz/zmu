@@ -546,10 +546,10 @@ p {
     transform: translateX(-150%) skewX(-25deg);
   }
   50% {
-    transform: translateX(250%) skewX(-25deg);
+    transform: translateX(150%) skewX(-25deg);
   }
   100% {
-    transform: translateX(250%) skewX(-25deg);
+    transform: translateX(150%) skewX(-25deg);
   }
 }
 
@@ -592,5 +592,29 @@ p {
   .lightbox-controls {
     gap: 10px;
   }
-}
 
+  .includes-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .includes-text {
+    order: 1;
+  }
+
+  .includes-image {
+    order: 2;
+    width: 100%;
+    height: 450px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .includes-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center -120px;
+  }
+}
