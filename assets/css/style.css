@@ -236,6 +236,12 @@ p {
   gap: 30px;
   text-align: center;
 }
+.highlight-number {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-right: 8px;
+}
 .embedded-image {
   display: block;
   margin: 50px auto;
