@@ -457,20 +457,62 @@ p {
   box-sizing: border-box;
   pointer-events: none;
 }
-.carousel-button {
-  background-color: rgba(255, 255, 255, 0.7);
-  border: none;
-  color: var(--color-dark);
-  padding: 10px 15px;
+/* --- DOPRACOWANE STYLE PRZYCISKÓW KARUZELI (PREMIUM v2) --- */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* Styl "szkła" */
+  background-color: rgba(
+    78,
+    66,
+    61,
+    0.45
+  ); /* Lekko mniej przezroczyste na start */
+  backdrop-filter: blur(10px); /* Bardziej intensywne rozmycie dla głębi */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Wyraźniejsza, ale subtelna ramka */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Mocniejszy cień dla efektu uniesienia */
+
+  /* Kształt i rozmiar */
   border-radius: 50%;
+  width: 50px; /* Nieco większe przyciski */
+  height: 50px;
+
+  /* Ustawienia i interakcja */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  font-size: 1.5rem;
-  transition: background-color 0.3s ease;
-  line-height: 1;
+  z-index: 10;
+
+  /* ZMIANA: Krótsza i delikatniejsza animacja */
+  transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
   pointer-events: auto;
 }
-.carousel-button:hover {
-  background-color: var(--color-white);
+
+.carousel-nav-btn svg {
+  stroke: var(--color-white);
+  width: 24px; /* Zwiększamy rozmiar ikony dla lepszej widoczności */
+  height: 24px;
+  /* Dodajemy subtelny cień na ikonie, aby była bardziej wyrazista */
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+.carousel-nav-btn:hover {
+  /* ZMIANA: Delikatne przyciemnienie i subtelne powiększenie */
+  background-color: rgba(78, 66, 61, 0.65); /* Zwiększamy krycie */
+  border-color: rgba(255, 255, 255, 0.35); /* Wyraźniejsza ramka */
+  transform: translateY(-50%) scale(1.03); /* Mniejsze powiększenie (1.03 zamiast 1.1) */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35); /* Mocniejszy cień na hover */
+}
+
+#prevBtn {
+  left: 20px;
+}
+
+#nextBtn {
+  right: 20px;
 }
 .carousel-dots {
   position: absolute;

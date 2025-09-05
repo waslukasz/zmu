@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const carousel = document.querySelector(".carousel");
   const lightboxOverlay = document.getElementById("lightboxOverlay");
+  const lightboxContainer = document.getElementById("lightboxContainer");
 
   let stopAutoPlay = () => {};
   let startAutoPlay = () => {};
@@ -163,7 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
     lightboxClose.addEventListener("click", closeLightbox);
     lightboxImage.addEventListener("click", closeLightbox);
     lightboxOverlay.addEventListener("click", (e) => {
-      if (e.target === lightboxOverlay) closeLightbox();
+      if (e.target === lightboxOverlay || e.target === lightboxContainer)
+        closeLightbox();
     });
     lightboxPrev.addEventListener("click", () => changeImage("prev"));
     lightboxNext.addEventListener("click", () => changeImage("next"));
