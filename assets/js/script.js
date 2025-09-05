@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   AOS.init({
     duration: 800,
-    once: false,
+    once: true,
     offset: 50,
   });
 
@@ -174,6 +174,20 @@ document.addEventListener("DOMContentLoaded", function () {
         if (e.key === "ArrowRight") changeImage("next");
         if (e.key === "ArrowLeft") changeImage("prev");
       }
+    });
+    const allFaqQuestions = document.querySelectorAll(".faq-question");
+    allFaqQuestions.forEach((question) => {
+      question.addEventListener("click", () => {
+        const isAlreadyActive = question.classList.contains("active");
+        allFaqQuestions.forEach((q) => {
+          q.classList.remove("active");
+          q.setAttribute("aria-expanded", "false");
+        });
+        if (!isAlreadyActive) {
+          question.classList.add("active");
+          question.setAttribute("aria-expanded", "true");
+        }
+      });
     });
   }
 });

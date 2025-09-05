@@ -363,6 +363,57 @@ p {
   text-align: left;
   margin: 0;
 }
+.faq-accordion {
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+.faq-item {
+  border-bottom: 1px solid #ddd;
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--color-dark);
+}
+.faq-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--color-accent);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-question.active .faq-icon {
+  transform: rotate(45deg);
+}
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq-question.active + .faq-answer {
+  grid-template-rows: 1fr;
+}
+.faq-answer > p {
+  overflow: hidden;
+  padding: 0 10px 0 10px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  transition: padding 0.3s ease;
+}
+
+.faq-question.active + .faq-answer > p {
+  padding: 0 10px 20px 10px;
+}
 
 /* ========================================================================
          5. KARUZELA I LIGHTBOX
@@ -611,5 +662,3 @@ p {
     overflow: hidden;
   }
 }
-
-
